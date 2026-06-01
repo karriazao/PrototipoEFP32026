@@ -1,14 +1,14 @@
 
 package Vista;
 
-import Controlador.clsLibreria;
-import Modelo.LibreriaDAO;
+import Controlador.clsCarreras;
+import Modelo.CarrerasDAO;
 import java.io.File;
 import java.sql.Connection;
 
 public class frmLibreria extends javax.swing.JFrame {
 
-private final LibreriaDAO dao = new LibreriaDAO();
+private final CarrerasDAO dao = new CarrerasDAO();
 
     public frmLibreria() {
         initComponents();
@@ -283,10 +283,10 @@ if (!camposCompletos()) {
 try {
 
     // Obtiene los datos del formulario
-    clsLibreria libro = getLibroDeFormulario();
+    clsCarreras libro = getLibroDeFormulario();
 
     // Guarda el libro en la base de datos
-    LibreriaDAO dao = new LibreriaDAO();
+    CarrerasDAO dao = new CarrerasDAO();
     int resultado = dao.ingresaLibro(libro);
 
     if (resultado > 0) {
@@ -346,8 +346,8 @@ try {
 
     int codigo = Integer.parseInt(id.getText().trim());
 
-    LibreriaDAO dao = new LibreriaDAO();
-    clsLibreria libro = dao.getLibro(codigo);
+    CarrerasDAO dao = new CarrerasDAO();
+    clsCarreras libro = dao.getLibro(codigo);
 
     if (libro != null) {
 
@@ -414,7 +414,7 @@ if (!camposCompletos()) return;
 try {
 
     // Obtiene los datos del formulario
-    clsLibreria libro = getLibroDeFormulario();
+    clsCarreras libro = getLibroDeFormulario();
 
     // Asigna el ID del libro a actualizar
     libro.setLibCodigo(
@@ -488,10 +488,10 @@ try {
 
     int codigo = Integer.parseInt(id.getText().trim());
 
-    clsLibreria libro = new clsLibreria();
+    clsCarreras libro = new clsCarreras();
     libro.setLibCodigo(codigo);
 
-    LibreriaDAO dao = new LibreriaDAO();
+    CarrerasDAO dao = new CarrerasDAO();
     int resultado = dao.borraLibro(libro);
 
     if (resultado > 0) {
@@ -674,7 +674,7 @@ private void cargarTabla() {
         }
     };
 
-    for (clsLibreria lib : new clsLibreria().getListaLibros()) {
+    for (clsCarreras lib : new clsCarreras().getListaLibros()) {
 
         String permisosLibro =
                 "I:" + lib.getLibIns()
@@ -762,9 +762,9 @@ private void configurarSeleccionTabla() {
 }
 
 // ── Crea el objeto clsLibreria desde los campos del formulario ─
-private clsLibreria getLibroDeFormulario() {
+private clsCarreras getLibroDeFormulario() {
 
-    clsLibreria libro = new clsLibreria(
+    clsCarreras libro = new clsCarreras(
         0, // ID lo genera MySQL (AUTO_INCREMENT)
 
         titulo.getText().trim(),
