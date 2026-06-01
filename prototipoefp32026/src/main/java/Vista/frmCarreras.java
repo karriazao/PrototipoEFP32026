@@ -13,7 +13,7 @@ private final CarrerasDAO dao = new CarrerasDAO();
     public frmCarreras() {
         initComponents();
         setResizable(true);
-        setTitle("Libreria");
+        setTitle("Carreras");
         cargarTabla();
         configurarSeleccionTabla();
         setDefaultCloseOperation(javax.swing.JInternalFrame.DISPOSE_ON_CLOSE);
@@ -48,7 +48,7 @@ private final CarrerasDAO dao = new CarrerasDAO();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Corbel", 2, 13)); // NOI18N
-        jLabel1.setText("Librería");
+        jLabel1.setText("Carreras");
 
         Agregar.setFont(new java.awt.Font("Corbel", 2, 13)); // NOI18N
         Agregar.setText("Agregar");
@@ -215,9 +215,8 @@ private final CarrerasDAO dao = new CarrerasDAO();
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
-                                    .addComponent(estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(27, 27, 27)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                                    .addComponent(estatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
         );
@@ -234,7 +233,7 @@ if (!camposCompletos()) {
 try {
 
     // Obtiene los datos del formulario
-    clsCarreras carrera = getLibroDeFormulario();
+    clsCarreras carrera = getCarreraDeFormulario();
 
     // Guarda la carrera en la base de datos
     CarrerasDAO dao = new CarrerasDAO();
@@ -263,14 +262,6 @@ try {
                 javax.swing.JOptionPane.ERROR_MESSAGE);
     }
 
-} catch (NumberFormatException ex) {
-
-    javax.swing.JOptionPane.showMessageDialog(
-            this,
-            "El año debe ser un número válido.",
-            "Error",
-            javax.swing.JOptionPane.ERROR_MESSAGE);
-
 } catch (Exception e) {
 
     javax.swing.JOptionPane.showMessageDialog(
@@ -298,32 +289,23 @@ try {
     int codigo = Integer.parseInt(id.getText().trim());
 
     CarrerasDAO dao = new CarrerasDAO();
-    clsCarreras libro = dao.getLibro(codigo);
+    clsCarreras carrera = dao.getCarrera(codigo);
 
-    if (libro != null) {
+    if (carrera != null) {
 
-        nombre.setText(libro.getLibTitulo());
-        facultad.setText(libro.getLibAutor());
-        estatus.setText(libro.getLibCategoria());
-        editorial.setText(libro.getLibEditorial());
-        año.setText(String.valueOf(libro.getLibAnio()));
-
-        permisos.setText(
-                libro.getLibIns()
-                + libro.getLibSel()
-                + libro.getLibUpd()
-                + libro.getLibDel()
-                + libro.getLibRep());
+        nombre.setText(carrera.getCarnombre());
+        facultad.setText(carrera.getFaccodigo());
+        estatus.setText(carrera.getCarestatus());
 
         javax.swing.JOptionPane.showMessageDialog(
                 this,
-                "Libro encontrado correctamente.");
+                "Carrera encontrada correctamente.");
 
     } else {
 
         javax.swing.JOptionPane.showMessageDialog(
                 this,
-                "No se encontró un libro con ID: " + codigo,
+                "No se encontró una carrera con ID: " + codigo,
                 "Sin resultados",
                 javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
@@ -365,19 +347,17 @@ if (!camposCompletos()) return;
 try {
 
     // Obtiene los datos del formulario
-    clsCarreras libro = getLibroDeFormulario();
+    clsCarreras carrera = getCarreraDeFormulario();
 
-    // Asigna el ID del libro a actualizar
-    libro.setLibCodigo(
+    carrera.setCarcodigo(
         Integer.parseInt(id.getText().trim()));
 
-    // Actualiza el libro
-    int resultado = libro.setModificarLibro(libro);
+    int resultado = carrera.setModificarCarreras(carrera);
 
     if (resultado > 0) {
 
         javax.swing.JOptionPane.showMessageDialog(this,
-            "Libro actualizado correctamente.",
+            "Carrera actualizada correctamente.",
             "Éxito",
             javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
@@ -390,7 +370,7 @@ try {
     } else {
 
         javax.swing.JOptionPane.showMessageDialog(this,
-            "No se pudo actualizar el libro.",
+            "No se pudo actualizar la carrera.",
             "Error",
             javax.swing.JOptionPane.ERROR_MESSAGE);
     }
@@ -427,7 +407,7 @@ if (id.getText().trim().isEmpty()) {
 // Solicita confirmación
 int confirm = javax.swing.JOptionPane.showConfirmDialog(
         this,
-        "¿Está seguro de que desea eliminar este libro?",
+        "¿Está seguro de que desea eliminar esta carrera?",
         "Confirmar eliminación",
         javax.swing.JOptionPane.YES_NO_OPTION);
 
@@ -439,17 +419,17 @@ try {
 
     int codigo = Integer.parseInt(id.getText().trim());
 
-    clsCarreras libro = new clsCarreras();
-    libro.setLibCodigo(codigo);
+    clsCarreras carrera = new clsCarreras();
+    carrera.setCarcodigo(codigo);
 
     CarrerasDAO dao = new CarrerasDAO();
-    int resultado = dao.borraLibro(libro);
+    int resultado = dao.borraCarrera(carrera);
 
     if (resultado > 0) {
 
         javax.swing.JOptionPane.showMessageDialog(
                 this,
-                "Libro eliminado correctamente.",
+                "Carrera eliminada correctamente.",
                 "Éxito",
                 javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
@@ -460,7 +440,7 @@ try {
 
         javax.swing.JOptionPane.showMessageDialog(
                 this,
-                "No se pudo eliminar el libro.",
+                "No se pudo eliminar la carrera.",
                 "Error",
                 javax.swing.JOptionPane.ERROR_MESSAGE);
     }
@@ -646,16 +626,11 @@ private void limpiarCampos() {
 // ── Valida que los campos no estén vacíos ───────────────────
 private boolean camposCompletos() {
 
-    if (nombre.getText().trim().isEmpty()
-            || facultad.getText().trim().isEmpty()
-            || estatus.getText().trim().isEmpty()
-            {
-
+    if (id.getText().trim().isEmpty(){
         javax.swing.JOptionPane.showMessageDialog(this,
                 "Complete todos los campos de la carrera.",
                 "Campos incompletos",
                 javax.swing.JOptionPane.WARNING_MESSAGE);
-
         return false;
     }
 
@@ -688,7 +663,7 @@ private void configurarSeleccionTabla() {
 // ── Crea el objeto clsLibreria desde los campos del formulario ─
 private clsCarreras getCarreraDeFormulario() {
 
-    clsCarreras libro = new clsCarreras(
+    clsCarreras carrera = new clsCarreras(
         0, // ID lo genera MySQL (AUTO_INCREMENT)
 
         nombre.getText().trim(),
@@ -696,7 +671,7 @@ private clsCarreras getCarreraDeFormulario() {
         estatus.getText().trim()
     );
 
-    return libro;
+    return carrera;
 }
 
     /**

@@ -132,10 +132,9 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="107" max="32767" attributes="0"/>
+              <EmptySpace pref="134" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="158" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
@@ -148,7 +147,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Corbel" size="13" style="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Librer&#xed;a"/>
+        <Property name="text" type="java.lang.String" value="Carreras"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="Agregar">
