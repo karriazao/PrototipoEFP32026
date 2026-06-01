@@ -13,10 +13,6 @@ package Modelo;
  * - Eliminar de la base de datos
  * - Obtener una carrera específico por su código
  * - Registro automático de operaciones en bitácora
- *
- * Nota: Los campos BIT(1) (LibIns, LibSel, LibUpd, LibDel, LibRep) se manejan
- * con getBoolean() en lectura y setBoolean() en escritura para compatibilidad
- * con MySQL.
  */
 
 import Controlador.clsCarreras;
@@ -131,7 +127,7 @@ public class CarrerasDAO {
         List<clsCarreras> lista = new ArrayList<>();
 
         String sql = "SELECT Carcodigo, Carnombre, Faccodigo, Carestatus, "
-                + "FROM carrera";
+                + "FROM carreras";
 
         try (Connection conn = Conexion.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
