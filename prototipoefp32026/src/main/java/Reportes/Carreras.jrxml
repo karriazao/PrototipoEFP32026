@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="62562498-1797-46c1-8275-37482443244d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM `carreras`]]>
+	</queryString>
+	<field name="Carcodigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Carnombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Faccodigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Carestatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="18f01fee-ad8e-4f5b-846b-d571e86ecd18"/>
+				<text><![CDATA[Carcodigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="148" y="0" width="100" height="20" uuid="49f93d13-1a9e-4b9f-9af3-b6261509d321"/>
+				<text><![CDATA[Carnombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="2" width="100" height="20" uuid="590682c0-df38-4950-ad01-4f4afe89006f"/>
+				<text><![CDATA[Faccodigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="2" width="100" height="20" uuid="8f7b4cac-8d41-43f6-9fbe-97ad30676264"/>
+				<text><![CDATA[Carestatus]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="17" width="100" height="20" uuid="4c695421-f655-4fd6-a1eb-17b78152eda8"/>
+				<textFieldExpression><![CDATA[$F{Carcodigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="148" y="17" width="100" height="20" uuid="365448e8-bc36-456c-9e86-003210185810"/>
+				<textFieldExpression><![CDATA[$F{Carnombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="294" y="17" width="100" height="20" uuid="7611ac1b-dfd0-4c58-801b-5750e3e8dd06"/>
+				<textFieldExpression><![CDATA[$F{Faccodigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="25" width="100" height="20" uuid="74b3a552-eb68-4215-ada4-6a9816a38097"/>
+				<textFieldExpression><![CDATA[$F{Carestatus}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

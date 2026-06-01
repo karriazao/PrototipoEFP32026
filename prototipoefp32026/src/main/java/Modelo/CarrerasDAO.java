@@ -150,7 +150,7 @@ public class CarrerasDAO {
 
     public clsCarreras getCarrera(int Carcodigo) {
 
-        clsCarreras lib = null;
+        clsCarreras car = null;
 
         String sql = "SELECT * FROM carreras WHERE Carcodigo=?";
 
@@ -162,14 +162,14 @@ public class CarrerasDAO {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                lib = mapearCarrera(rs);
+                car = mapearCarrera(rs);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return lib;
+        return car;
     }
 
     // ── MAPEO PRIVADO ─────────────────────────────────────────────────────────
